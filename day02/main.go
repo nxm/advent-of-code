@@ -22,17 +22,17 @@ func main() {
 }
 
 func checkGame(input string) (int, bool) {
-	gameID, err := strconv.ParseInt(strings.Split(strings.Split(input, ":")[0], " ")[1], 10, 64)
+	gameID, err := strconv.Atoi(strings.Split(strings.Split(input, ":")[0], " ")[1])
 	if err != nil {
 		panic(err)
 	}
 	rounds := strings.Split(strings.Split(input, ": ")[1], ";")
 	for _, r := range rounds {
 		if ok := checkRound(r); !ok {
-			return int(gameID), false
+			return gameID, false
 		}
 	}
-	return int(gameID), true
+	return gameID, true
 
 }
 
